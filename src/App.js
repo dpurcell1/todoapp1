@@ -11,17 +11,29 @@ class App extends Component {
   } 
   render() {
     return (
-      <section className="todoapp">
-        <header className="header">
+      <section className = "todoapp">
+        <header className = "header">
           <h1>todos</h1>
-          <input onKeyPress = {this.addTodo} className="new-todo" placeholder="What needs to be done?" autoFocus />
+          <input 
+            onKeyPress = {this.addTodo} 
+            className = "new-todo" 
+            placeholder = "What needs to be done?" 
+            autoFocus 
+          />
         </header>
-        <TodoList todos={this.state.todos} toggle = {this.toggle} destroy = {this.destroy} />
-        <footer className="footer">
-          <span className="todo-count">
+        <TodoList 
+          todos = {this.state.todos} 
+          toggle = {this.toggle} 
+          destroy = {this.destroy} 
+        />
+        <footer className = "footer">
+          <span className = "todo-count">
             <strong>0</strong> item(s) left
           </span>
-          <button onClick = {this.clearCompleted} className="clear-completed">Clear completed</button>
+          <button 
+            onClick = {this.clearCompleted} 
+            className = "clear-completed">Clear completed
+          </button>
         </footer>
       </section>
     );
@@ -78,8 +90,7 @@ class App extends Component {
         todos: newTodos
       }
     })
-  } 
-  
+  }  
 
   clearCompleted = () => {
     let newTodos = []
@@ -101,11 +112,18 @@ class App extends Component {
 class TodoItem extends Component {
   render() {
     return (
-      <li className={this.props.completed ? "completed" : ""}>
-        <div className="view">
-          <input onClick = {this.props.toggle} className="toggle" type="checkbox" checked={this.props.completed} />
+      <li className = {this.props.completed ? "completed" : ""}>
+        <div className = "view">
+          <input 
+            onClick = {this.props.toggle} 
+            className = "toggle" type = "checkbox" 
+            checked = {this.props.completed} 
+          />
           <label>{this.props.title}</label>
-          <button onClick = {this.props.destroy} className="destroy"></button>
+          <button 
+            onClick = {this.props.destroy} 
+            className = "destroy">            
+          </button>
         </div>
       </li>
     );
@@ -115,14 +133,14 @@ class TodoItem extends Component {
 class TodoList extends Component {  
   render() {
     return (
-      <section className="main">
-        <ul className="todo-list">
+      <section className = "main">
+        <ul className = "todo-list">
           {this.props.todos.map((todo) => (
             <TodoItem 
-              title={todo.title} 
-              completed={todo.completed} 
+              title = {todo.title} 
+              completed = {todo.completed} 
               toggle = {event => this.props.toggle(todo.id)}
-              destroy ={event => this.props.destroy(todo.id)} 
+              destroy = {event => this.props.destroy(todo.id)} 
             />
           ))}
         </ul>
